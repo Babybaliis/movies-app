@@ -8,13 +8,15 @@ import {
   Form,
   Img,
   Label,
-  MovieItemDiv,
+  MovieItemDiv
 } from "./movies-item-style";
+import { Spin } from "antd";
 
 class Movie extends Component {
   state = {
     label: this.props.label,
     id: this.props.id,
+    spin: this.props.spin
   };
   getDate = (dates) => {
     if (!dates) {
@@ -45,35 +47,37 @@ class Movie extends Component {
     const { genres, genre_ids, title, release_date, overview } = this.props;
 
     return (
-      <Form>
-        <MovieItemDiv
-          children={
-            <>
-              <Img
-                src={
-                  "https://image.tmdb.org/t/p/original" + this.props.poster_path
-                }
-              />
-              <Label>
-                <DivTitle>{title}</DivTitle>
-                <DivData>{this.getDate(release_date)}</DivData>
 
-                <DivGenres>
-                  {genres.length > 0 &&
-                    genre_ids.map((genreId) => {
-                      let genre = genres.find((genre) => genre.id === genreId);
-                      return (
-                        <DivGenresItem key={genre.id}>
-                          {genre.name}
-                        </DivGenresItem>
-                      );
-                    })}
-                </DivGenres>
-                <DivInfo>{this.textSlice(overview)}</DivInfo>
-              </Label>
-            </>
-          }
-        />
+      <Form>
+        {this.state.spin ? <Spin size={"small"} /> :
+          <MovieItemDiv
+            children={
+              <>
+                <Img
+                  src={
+                    "https://image.tmdb.org/t/p/original" + this.props.poster_path
+                  }
+                />
+                <Label>
+                  <DivTitle>{title}</DivTitle>
+                  <DivData>{this.getDate(release_date)}</DivData>
+                  <DivGenres>
+                    {genres.length > 0 &&
+                      genre_ids.map((genreId) => {
+                        let genre = genres.find((genre) => genre.id === genreId);
+                        return (
+                          <DivGenresItem key={genre.id}>
+                            {genre.name}
+                          </DivGenresItem>
+                        );
+                      })}
+                  </DivGenres>
+                  <DivInfo>{this.textSlice(overview)}</DivInfo>
+                </Label>
+              </>
+            }
+          />
+        }
       </Form>
     );
   }

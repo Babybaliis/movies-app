@@ -2,3 +2,26 @@ body {
     background-color: rgba(247, 247, 247, 1);
     margin: auto;
 }
+
+.ant-spin-sm .ant-spin-dot i {
+    width: 30px !important;
+    height: 30px !important;
+}
+
+.ant-spin-sm .ant-spin-dot {
+    font-size: 60px !important;
+}
+
+
+.ant-spin-lg .ant-spin-dot i {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+.ant-spin-lg .ant-spin-dot {
+    font-size: 126px !important;
+}
+
+.ant-spin-dot-spin {
+    animation: antRotate 1.6s infinite linear !important;
+}

@@ -11,7 +11,6 @@ export const MoviesList = ({ movie, genres }) => {
       </Li>
     );
   });
-
   return (
     <Section>
       <Ul>{elements}</Ul>

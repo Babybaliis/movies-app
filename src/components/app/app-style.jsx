@@ -6,13 +6,22 @@ export const Div = styled.div`
   margin: 0 auto;
   max-width: 1010px;
   width: 100%;
+  height: auto;
 `;
 
 export const Section = styled.section`
-  //position: relative;
-  //background: #FFFFFF;
-  //display: flex;
-  //justify-content: center;
-  //width: 1010px;
-  //height: 1147px;
+  //margin: 20px 0;
+  //padding: 30px 50px;
+  //text-align: center;
+  //background: rgba(0, 0, 0, 0.05);
+  //border-radius: 4px;
 `;
+
+export const DivSpin = styled.div`
+  width: 100%;
+  margin: 200px 0;
+  padding: 30px 50px;
+  text-align: center;
+  border-radius: 4px;
+  background-color: rgba(247, 247, 247, 1);
+`
