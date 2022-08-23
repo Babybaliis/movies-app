@@ -10,12 +10,22 @@ export const Div = styled.div`
 `;
 
 export const Section = styled.section`
-  //margin: 20px 0;
-  //padding: 30px 50px;
-  //text-align: center;
-  //background: rgba(0, 0, 0, 0.05);
-  //border-radius: 4px;
+  padding: 30px 0;
 `;
+
+export const Input = styled.input`
+  align-items: center;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+  color: rgba(0,0,0,.25);
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  height: 40px;
+  line-height: 22px;
+  padding-left: 12px;
+  width: 100%;
+`
 
 export const DivSpin = styled.div`
   width: 100%;

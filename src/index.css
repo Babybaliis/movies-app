@@ -12,6 +12,9 @@ body {
     font-size: 60px !important;
 }
 
+.ant-pagination {
+    padding: 50px 25% !important;
+}
 
 .ant-spin-lg .ant-spin-dot i {
     width: 50px !important;

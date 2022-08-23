@@ -57,6 +57,7 @@ class Movie extends Component {
                   src={
                     "https://image.tmdb.org/t/p/original" + this.props.poster_path
                   }
+                  onLoad={(e)=>console.log()}
                 />
                 <Label>
                   <DivTitle>{title}</DivTitle>
