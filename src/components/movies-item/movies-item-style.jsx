@@ -5,9 +5,6 @@ export const Form = styled.form`
 `;
 
 export const MovieItemDiv = styled.div`
-  max-width: 454px;
-  width: 100%;
-  height: 281px;
   display: flex;
 `;
 
@@ -15,16 +12,55 @@ export const Img = styled.img`
   max-width: 183px;
   width: 100%;
   height: auto;
+  @media (max-width: 549px) {
+    position: absolute;
+    max-width: 110px;
+    width: 100%;
+    height: auto;
+    padding: 7px 10px 0 13px;
+  }
 `;
 
 export const Label = styled.label`
   padding: 20px;
+  @media (max-width: 1000px) {
+    max-width: 930px;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+  }
+`;
+
+export const Span = styled.span`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  @media (max-width: 550px) {
+    margin-left: 110px;
+    margin-top: 10px;
+  }
 `;
 
 export const DivTitle = styled.div`
-  display: flex;
-  justify-content: start;
   width: 100%;
+`;
+
+export const DivRating = styled.div`
+  border-radius: 50%;
+  border: 1px solid;
+  align-items: center;
+  display: flex;
+  height: 28px;
+  justify-content: center;
+  width: 33px;
+  border-color: ${({ rating }) =>
+    rating < 3
+      ? "#E90000"
+      : rating < 5
+      ? "#E97E00"
+      : rating < 7
+      ? "#E9D100"
+      : "#66E900"};
 `;
 
 export const DivGenres = styled.div`
@@ -36,7 +72,12 @@ export const DivGenres = styled.div`
   margin-top: 7px;
   justify-content: flex-start;
   width: 100%;
+  @media (max-width: 550px) {
+    padding-left: 110px;
+    margin-bottom: 10px;
+  }
 `;
+
 export const DivGenresItem = styled.div`
   background-color: #fafafa;
   border: 1px solid #000;
@@ -46,6 +87,8 @@ export const DivGenresItem = styled.div`
   margin-right: 10px;
   padding: 3px 5px;
   text-decoration: none;
+  @media (max-width: 550px) {
+  }
 `;
 
 export const DivData = styled.div`
@@ -53,6 +96,10 @@ export const DivData = styled.div`
   font-size: 12px;
   line-height: 18px;
   margin-top: 7px;
+  @media (max-width: 550px) {
+    margin-left: 110px;
+    margin-bottom: 20px;
+  }
 `;
 
 export const DivInfo = styled.div`
@@ -61,4 +108,7 @@ export const DivInfo = styled.div`
   font-weight: 400;
   line-height: 18px;
   margin-top: 7px;
+  @media (max-width: 550px) {
+    margin: 30px 10px 40px 10px;
+  }
 `;

@@ -4,19 +4,22 @@ import {
   DivGenres,
   DivGenresItem,
   DivInfo,
+  DivRating,
   DivTitle,
   Form,
   Img,
   Label,
-  MovieItemDiv
+  MovieItemDiv,
+  Span,
 } from "./movies-item-style";
-import { Spin } from "antd";
+import { Rate, Spin } from "antd";
+import "../../index.css";
 
 class Movie extends Component {
   state = {
     label: this.props.label,
     id: this.props.id,
-    spin: this.props.spin
+    spin: this.props.spin,
   };
   getDate = (dates) => {
     if (!dates) {
@@ -44,28 +47,45 @@ class Movie extends Component {
   };
 
   render() {
-    const { genres, genre_ids, title, release_date, overview } = this.props;
+    const {
+      id,
+      genres,
+      genre_ids,
+      title,
+      release_date,
+      overview,
+      vote_average,
+      rate,
+      changeMovie,
+    } = this.props;
 
     return (
-
       <Form>
-        {this.state.spin ? <Spin size={"small"} /> :
+        {this.state.spin ? (
+          <Spin size={"small"} />
+        ) : (
           <MovieItemDiv
             children={
               <>
                 <Img
                   src={
-                    "https://image.tmdb.org/t/p/original" + this.props.poster_path
+                    "https://image.tmdb.org/t/p/original" +
+                    this.props.poster_path
                   }
-                  onLoad={(e)=>console.log()}
+                  onLoad={(e) => console.log()}
                 />
                 <Label>
-                  <DivTitle>{title}</DivTitle>
+                  <Span>
+                    <DivTitle>{title} </DivTitle>
+                    <DivRating rating={vote_average}>{vote_average} </DivRating>
+                  </Span>
                   <DivData>{this.getDate(release_date)}</DivData>
                   <DivGenres>
                     {genres.length > 0 &&
                       genre_ids.map((genreId) => {
-                        let genre = genres.find((genre) => genre.id === genreId);
+                        let genre = genres.find(
+                          (genre) => genre.id === genreId
+                        );
                         return (
                           <DivGenresItem key={genre.id}>
                             {genre.name}
@@ -74,11 +94,17 @@ class Movie extends Component {
                       })}
                   </DivGenres>
                   <DivInfo>{this.textSlice(overview)}</DivInfo>
+                  <Rate
+                    allowHalf
+                    defaultValue={rate}
+                    count={10}
+                    onChange={(e) => changeMovie(id, e)}
+                  />
                 </Label>
               </>
             }
           />
-        }
+        )}
       </Form>
     );
   }

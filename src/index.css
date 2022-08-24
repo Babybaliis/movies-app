@@ -13,7 +13,10 @@ body {
 }
 
 .ant-pagination {
-    padding: 50px 25% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: 26em;
+    margin-bottom: 20px !important;
 }
 
 .ant-spin-lg .ant-spin-dot i {
@@ -27,4 +30,28 @@ body {
 
 .ant-spin-dot-spin {
     animation: antRotate 1.6s infinite linear !important;
+}
+
+.ant-rate {
+    bottom: 15px;
+    position: absolute;
+}
+
+@media (max-width: 550px){
+    .ant-rate {
+        right: 20px !important;
+        bottom: 5px;
+    }
+
+}
+
+.anticon {
+    width: 15px ;
+    height: auto;
+
+}
+
+
+.ant-tabs>.ant-tabs-nav {
+    margin: 0 auto !important;
 }
