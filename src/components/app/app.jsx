@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { MoviesList } from "../movies-list/movies-list";
-import { Div, DivSpin, Section, Input } from "./app-style";
+import { Div, DivSpin, Section, Input, DivSearch } from "./app-style";
 import { Alert, Pagination, Spin, Tabs } from "antd";
 
 import "../../index.css";
@@ -22,13 +22,13 @@ class App extends Component {
     isOffline: false,
     textValue: "life",
     pageSize: 10,
-    currentPage: 1,
+    currentPage: 1
   };
 
   async auth(callback) {
     let response = await fetch(
       "https://api.themoviedb.org/3/authentication/guest_session/new?api_key=" +
-        this.key
+      this.key
     );
     let re = await this.updateList();
     let ge = await this.updateGenres();
@@ -48,7 +48,7 @@ class App extends Component {
           totalPages: listJson.total_pages,
           totalResults:
             page === 1 ? listJson.total_results : this.state.totalResults,
-          currentPage: page,
+          currentPage: page
         },
         () => {
           if (page === 1) {
@@ -70,15 +70,16 @@ class App extends Component {
     let saveMovie = newState.filter((value) => !!value.rate);
     this.setState({
       moviesList: newState,
-      saveMoviesList: saveMovie,
+      saveMoviesList: saveMovie
     });
   }
+
   loadList(page = 1, text) {
     return fetch(
       "https://api.themoviedb.org/3/search/movie?api_key=" +
-        this.key +
-        `&query=${text}&page=` +
-        page
+      this.key +
+      `&query=${text}&page=` +
+      page
     ).then((res) => {
       return res;
     });
@@ -95,8 +96,8 @@ class App extends Component {
   loadGenres() {
     return fetch(
       "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
-        this.key +
-        "&language=en-US"
+      this.key +
+      "&language=en-US"
     ).then((res) => {
       return res;
     });
@@ -133,10 +134,12 @@ class App extends Component {
             <Tabs defaultActiveKey="1" centered>
               <TabPane tab="Search" key="1">
                 <Section>
-                  <Input
-                    placeholder={"Type to search..."}
-                    onChange={(e) => this.onChangeInput(e)}
-                  />
+                  <DivSearch>
+                    <Input
+                      placeholder={"Type to search..."}
+                      onChange={(e) => this.onChangeInput(e)}
+                    />
+                  </DivSearch>
                   {this.state.spin ? (
                     <DivSpin>
                       <Spin size={"large"} />
@@ -150,15 +153,17 @@ class App extends Component {
                       />
                     </>
                   )}
-                  <Pagination
-                    defaultCurrent={1}
-                    current={this.state.currentPage}
-                    showSizeChanger={false}
-                    defaultPageSize={this.state.pageSize}
-                    pageSize={this.state.pageSize}
-                    total={this.state.totalResults}
-                    onChange={(page) => this.updateList(page)}
-                  />
+                  {this.state.moviesList.length > 0 &&
+                    <Pagination
+                      defaultCurrent={1}
+                      current={this.state.currentPage}
+                      showSizeChanger={false}
+                      defaultPageSize={this.state.pageSize}
+                      pageSize={this.state.pageSize}
+                      total={this.state.totalResults}
+                      onChange={(page) => this.updateList(page)}
+                    />
+                  }
                 </Section>
               </TabPane>
               <TabPane tab="Rated" key="2">

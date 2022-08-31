@@ -2,6 +2,7 @@ import React from "react";
 import { Movie } from "../movies-item/movies-item";
 import { Li, Ul, Section } from "./movies-list-style";
 import { Alert } from "antd";
+import { DivSearch } from "../app/app-style";
 
 export const MoviesList = ({ movie, genres, changeMovie }) => {
   const elements = movie.map((item) => {
@@ -24,7 +25,9 @@ export const MoviesList = ({ movie, genres, changeMovie }) => {
           <Ul>{elements}</Ul>
         </>
       ) : (
-        <Alert type="warning" description="MOVIES NOT FOUND " showIcon />
+        <DivSearch>
+          <Alert type="warning" description="MOVIES NOT FOUND " showIcon />
+        </DivSearch>
       )}
     </Section>
   );

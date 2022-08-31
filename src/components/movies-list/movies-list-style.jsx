@@ -24,7 +24,7 @@ export const Ul = styled.ul`
   flex-wrap: wrap;
   gap: 10px;
   justify-content: space-between;
-  background-color: #dca7c536;
+  background-color: rgba(255, 237, 246, 0.74);
   list-style: none;
   padding: 30px;
   margin: 0 auto;
@@ -38,7 +38,6 @@ export const Ul = styled.ul`
 export const Section = styled.section`
   position: relative;
   margin: 0 auto;
-  background: ghostwhite;
   max-width: 1010px;
   width: 100%;
   height: 100%;
